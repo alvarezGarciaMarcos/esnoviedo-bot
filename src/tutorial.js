@@ -4,7 +4,7 @@ const slackSigningSecret = process.env.SLACK_SIGNIN_SECRET;
 const slackInteractions = createMessageAdapter(slackSigningSecret)
 
 
-slackInteractions.action({type: 'ask_cover'}, (payload, respond) => {
+slackInteractions.action({type: 'message_action'}, (payload, respond) => {
     console.log('payload', payload)
     respond({text: 'Thanks for your submission'})
 })
