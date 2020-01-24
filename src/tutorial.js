@@ -14,7 +14,7 @@ slackInteractions.action({type: 'ask_cover'}, (payload, respond) => {
 const web = new WebClient(process.env.SLACK_TOKEN);
 const currentTime = new Date().toTimeString();
 
-const port = process.env.port || 3000;
+const port = process.env.port;
 
 (async () => {
     const server = await slackInteractions.start(port)
