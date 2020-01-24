@@ -22,5 +22,31 @@ server.listen(port, () => {
 
 slackInteractions.action({type: 'message_action'}, (payload, respond) => {
     console.log('payload', payload)
-    respond({text: 'Thanks for your submission'})
-})
+    return {
+        response_action: 'push',
+        view: {
+          type: 'modal',
+          callback_id: 'second_step_callback_id',
+          title: {
+            type: 'plain_text',
+            text: 'Second step',
+          },
+          blocks: [
+            {
+              type: 'input',
+              block_id: 'last_thing',
+              element: {
+                type: 'plain_text_input',
+                action_id: 'text',
+              },
+              label: {
+                type: 'plain_text',
+                text: 'One last thing...',
+              },
+            },
+          ],
+        },
+      };
+    })
+
+
