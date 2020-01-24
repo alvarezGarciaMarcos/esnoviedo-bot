@@ -2,8 +2,6 @@ const { WebClient } = require('@slack/web-api')
 const { createMessageAdapter } = require('@slack/interactive-messages')
 const slackSigningSecret = process.env.SLACK_SIGNIN_SECRET;
 const slackInteractions = createMessageAdapter(slackSigningSecret)
-const ngrok = require('ngrok')
-
 slackInteractions.action({ type: 'message_action' }, (payload, respond) => {
     // Logs the contents of the action to the console
     console.log('payload', payload);
@@ -24,8 +22,5 @@ const port = process.env.port || 3000;
 
 (async () => {
     const server = await slackInteractions.start(port)
-    const url = await ngrok.connect();
-    console.log(`This is the url of ngrok: ${url}`)
-
     console.log(`Listening for events on port ${server.address().port}`)
 })();
