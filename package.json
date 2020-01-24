@@ -1,0 +1,11 @@
+{
+  "name": "mybot",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node src/tutorial.js"
+  },
+  "author": "",
+  "license": "ISC"
+}
