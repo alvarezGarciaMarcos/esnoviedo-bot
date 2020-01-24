@@ -7,5 +7,9 @@
     "start": "node src/tutorial.js"
   },
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "@slack/interactive-messages": "^1.4.1",
+    "@slack/web-api": "^5.7.0"
+  }
 }
