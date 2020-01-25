@@ -10,6 +10,65 @@ const slackInteractions = createMessageAdapter(slackSigningSecret)
 
 const port = process.env.PORT;
 const view = {
+	type: "modal",
+	title: {
+		type: "plain_text",
+		text: "My App",
+		emoji: true
+	},
+	submit: {
+		type: "plain_text",
+		text: "Submit",
+		emoji: true
+	},
+	close: {
+		type: "plain_text",
+		text: "Cancel",
+		emoji: true
+	},
+	blocks: [
+		{
+			type: "input",
+			element: {
+				type: "plain_text_input",
+				action_id: "sl_input",
+				placeholder: {
+					type: "plain_text",
+					text: "Placeholder text for single-line input"
+				}
+			},
+			label: {
+				type: "plain_text",
+				text: "Label"
+			},
+			hint: {
+				type: "plain_text",
+				text: "Hint text"
+			}
+		},
+		{
+			type: "input",
+			element: {
+				type: "plain_text_input",
+				action_id: "ml_input",
+				multiline: true,
+				placeholder: {
+					type: "plain_text",
+					text: "Placeholder text for multi-line input"
+				}
+			},
+			label: {
+				type: "plain_text",
+				text: "Label"
+			},
+			hint: {
+				type: "plain_text",
+				text: "Hint text"
+			}
+		}
+	]
+}
+/* const view = {
   trigger_id: "156772938.1827394",
   view: {
     type: "modal",
@@ -38,7 +97,7 @@ const view = {
     ]
   }
 }
-const app = express();
+ */const app = express();
 
 app.use('/', slackInteractions.requestListener());
 
