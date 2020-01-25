@@ -9,98 +9,176 @@ const slackInteractions = createMessageAdapter(slackSigningSecret)
 
 
 const port = process.env.PORT;
-const view = {
+const request_view = {
   trigger_id: '',
   view: {
-	type: "modal",
-	title: {
-		type: "plain_text",
-		text: "My App",
-		emoji: true
-	},
-	submit: {
-		type: "plain_text",
-		text: "Submit",
-		emoji: true
-	},
-	close: {
-		type: "plain_text",
-		text: "Cancel",
-		emoji: true
-	},
-	blocks: [
-		{
-			type: "input",
-			element: {
-				type: "plain_text_input",
-				action_id: "sl_input",
-				placeholder: {
-					type: "plain_text",
-					text: "Placeholder text for single-line input"
-				}
-			},
-			label: {
-				type: "plain_text",
-				text: "Label"
-			},
-			hint: {
-				type: "plain_text",
-				text: "Hint text"
-			}
-		},
-		{
-			type: "input",
-			element: {
-				type: "plain_text_input",
-				action_id: "ml_input",
-				multiline: true,
-				placeholder: {
-					type: "plain_text",
-					text: "Placeholder text for multi-line input"
-				}
-			},
-			label: {
-				type: "plain_text",
-				text: "Label"
-			},
-			hint: {
-				type: "plain_text",
-				text: "Hint text"
-			}
-		}
-	]
-}}
-
-/* const view = {
-  trigger_id: "156772938.1827394",
-  view: {
-    type: "modal",
-    callback_id: "modal-identifier",
-    title: {
-      type: "plain_text",
-      text: "Just a modal"
+    "type": "modal",
+    "title": {
+      "type": "plain_text",
+      "text": "Pedir una portada",
+      "emoji": true
     },
-    blocks: [
+    "submit": {
+      "type": "plain_text",
+      "text": "Ask",
+      "emoji": true
+    },
+    "close": {
+      "type": "plain_text",
+      "text": "Cancel",
+      "emoji": true
+    },
+    "blocks": [
       {
-        type: "section",
-        block_id: "section-identifier",
-        text: {
-          type: "mrkdwn",
-          text: "*Welcome* to ~my~ Block Kit _modal_!"
+        "type": "input",
+        "element": {
+          "type": "plain_text_input"
         },
-        accessory: {
-          type: "button",
-          text: {
-            type: "plain_text",
-            text: "Just a button"
+        "label": {
+          "type": "plain_text",
+          "text": "Título del evento",
+          "emoji": true
+        }
+      },
+      {
+        "type": "section",
+        "text": {
+          "type": "mrkdwn",
+          "text": "Comité que solicitala portada"
+        },
+        "accessory": {
+          "type": "static_select",
+          "placeholder": {
+            "type": "plain_text",
+            "text": "Select an item",
+            "emoji": true
           },
-          action_id: "button-identifier"
+          "options": [
+            {
+              "text": {
+                "type": "plain_text",
+                "text": "Lúdicas",
+                "emoji": true
+              },
+              "value": "ludicas"
+            },
+            {
+              "text": {
+                "type": "plain_text",
+                "text": "Cultura",
+                "emoji": true
+              },
+              "value": "cultura"
+            },
+            {
+              "text": {
+                "type": "plain_text",
+                "text": "Impacto Social",
+                "emoji": true
+              },
+              "value": "impacto_social"
+            },
+            {
+              "text": {
+                "type": "plain_text",
+                "text": "Viajes",
+                "emoji": true
+              },
+              "value": "viajes"
+            },
+            {
+              "text": {
+                "type": "plain_text",
+                "text": "Deportes",
+                "emoji": true
+              },
+              "value": "deportes"
+            }
+          ]
+        }
+      },
+      {
+        "type": "input",
+        "element": {
+          "type": "datepicker",
+          "initial_date": "2020-01-01",
+          "placeholder": {
+            "type": "plain_text",
+            "text": "Deadline",
+            "emoji": true
+          }
+        },
+        "label": {
+          "type": "plain_text",
+          "text": "Deadline",
+          "emoji": true
+        }
+      },
+      {
+        "type": "input",
+        "element": {
+          "type": "plain_text_input",
+          "multiline": true
+        },
+        "label": {
+          "type": "plain_text",
+          "text": "Comenetarios para la persona que diseña",
+          "emoji": true
+        }
+      },
+      {
+        "type": "input",
+        "element": {
+          "type": "datepicker",
+          "initial_date": "2020-01-01",
+          "placeholder": {
+            "type": "plain_text",
+            "text": "Select a date",
+            "emoji": true
+          }
+        },
+        "label": {
+          "type": "plain_text",
+          "text": "Fecha del evento",
+          "emoji": true
+        }
+      },
+      {
+        "type": "input",
+        "element": {
+          "type": "plain_text_input"
+        },
+        "label": {
+          "type": "plain_text",
+          "text": "Hora del evento",
+          "emoji": true
+        }
+      },
+      {
+        "type": "input",
+        "element": {
+          "type": "plain_text_input"
+        },
+        "label": {
+          "type": "plain_text",
+          "text": "Precio",
+          "emoji": true
+        }
+      },
+      {
+        "type": "input",
+        "element": {
+          "type": "plain_text_input"
+        },
+        "label": {
+          "type": "plain_text",
+          "text": "Localización",
+          "emoji": true
         }
       }
     ]
-  }
-}
- */const app = express();
+  }}
+const app = express();
 
 app.use('/', slackInteractions.requestListener());
 
@@ -116,8 +194,8 @@ slackInteractions.action({type: 'message_action'}, (payload, respond) => {
     const config = {
       headers: {Authorization: 'Bearer ' + process.env.SLACK_ACCESS_TOKEN}
     }
-    view.trigger_id = payload.trigger_id
-    const body = view
+    request_view.trigger_id = payload.trigger_id
+    const body = request_view
 
     /* console.log('payload', payload)
     console.log('config', config)
