@@ -18,6 +18,7 @@ const view = {
       type: 'plain_text',
       text: 'One last thing...',
     }
+  }
 const app = express();
 
 app.use('/', slackInteractions.requestListener());
