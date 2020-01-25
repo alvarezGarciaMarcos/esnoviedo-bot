@@ -1,4 +1,4 @@
-const request = require('request') 
+const axios = require('axios')
 const { createServer } = require('http');
 const express = require('express');
 const bodyParser = require('body-parser');
@@ -52,7 +52,7 @@ server.listen(port, () => {
 
 slackInteractions.action({type: 'message_action'}, (payload, respond) => {
     const config = {
-      headers: {Authorization: 'Bearer' + process.env.SLACK_ACCESS_TOKEN}
+      headers: {Authorization: 'Bearer ' + process.env.SLACK_ACCESS_TOKEN}
     }
     view.trigger_id = payload.trigger_id
     const body = view
@@ -61,20 +61,9 @@ slackInteractions.action({type: 'message_action'}, (payload, respond) => {
     console.log('config', config)
     console.log('body', body)
      */
-    request({
-      url: 'https://slack.com/api/views.open',
-      headers: {
-        'Authorization': 'Bearer' + process.env.SLACK_ACCESS_TOKEN
-      },
-      body: body
-    },
-    function(error, response, body){
-      console.log(body)
-    }
-    )
-/*     axios.post('https://slack.com/api/views.open', body, config)
+    
+   axios.post('https://slack.com/api/views.open', body, config)
       .then(console.log).catch(console.log)
- */
 })
 
 
