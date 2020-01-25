@@ -217,11 +217,11 @@ slackInteractions.action({type: 'message_action'}, (payload, respond) => {
 })
 
 slackInteractions.viewSubmission('cover-submission', (payload) => {
-    
+    console.log('payload', payload)
 })
 
 slackInteractions.action({type: 'static_select'}, (payload, respond) => {
-  console.log('static_select', payload)
+  
 })
 
 
