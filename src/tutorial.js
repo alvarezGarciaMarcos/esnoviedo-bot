@@ -69,7 +69,7 @@ slackInteractions.action({type: 'message_action'}, (payload, respond) => {
       body: body
     },
     function(error, response, body){
-      console.log(response)
+      console.log(body)
     }
     )
 /*     axios.post('https://slack.com/api/views.open', body, config)
