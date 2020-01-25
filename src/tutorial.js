@@ -48,10 +48,11 @@ const request_view = {
           "text": "Comité que solicitala portada"
         },
         "accessory": {
+          "action_id": "comite-selection",
           "type": "static_select",
           "placeholder": {
             "type": "plain_text",
-            "text": "Select an item",
+            "text": "Selecciona un comité",
             "emoji": true
           },
           "options": [
@@ -216,7 +217,15 @@ slackInteractions.action({type: 'message_action'}, (payload, respond) => {
 })
 
 slackInteractions.viewSubmission('cover-submission', (payload) => {
-    console.log(payload.view.state)
+    
+})
+
+slackInteractions.action({type: 'static_selection'}, (payload, respond) => {
+  console.log('static_selection', payload)
+})
+
+slackInteractions.action({type: 'dialog_submission'}, (payload, respond) => {
+  console.log('dialog_submission', payload)
 })
 
 
