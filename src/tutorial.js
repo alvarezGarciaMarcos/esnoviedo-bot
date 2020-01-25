@@ -216,6 +216,20 @@ app.use('/', slackInteractions.requestListener());
 
 app.use(bodyParser());
 
+
+app.post('https://esnoviedo-bot.herokuapp.com/create-cover', function(req, res){
+  const config = {
+    headers: {Authorization: 'Bearer ' + process.env.SLACK_ACCESS_TOKEN}
+  }
+  request_view.trigger_id = payload.trigger_id
+  const body = request_view
+
+ axios.post('https://slack.com/api/views.open', body, config)
+ res.status(200);
+ res.send()
+})
+
+
 const server = createServer(app);
 
 server.listen(port, () => {
@@ -263,17 +277,6 @@ fromPayloadToObject = payload => {
   return object;
 }
 
-app.post('https://esnoviedo-bot.herokuapp.com/create-cover', function(req, res){
-  const config = {
-    headers: {Authorization: 'Bearer ' + process.env.SLACK_ACCESS_TOKEN}
-  }
-  request_view.trigger_id = payload.trigger_id
-  const body = request_view
-
- axios.post('https://slack.com/api/views.open', body, config)
- res.status(200);
- res.send()
-})
 
 
 
