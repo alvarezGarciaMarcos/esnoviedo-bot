@@ -217,7 +217,7 @@ app.use('/', slackInteractions.requestListener());
 app.use(bodyParser());
 
 
-app.post('https://esnoviedo-bot.herokuapp.com/create-cover', function(req, res){
+app.post('/create-cover', function(req, res){
   const config = {
     headers: {Authorization: 'Bearer ' + process.env.SLACK_ACCESS_TOKEN}
   }
