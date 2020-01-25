@@ -230,6 +230,8 @@ slackInteractions.action({type: 'message_action'}, (payload, respond) => {
     const body = request_view
 
    axios.post('https://slack.com/api/views.open', body, config)
+
+
 })
 
 slackInteractions.viewSubmission('cover-submission', (payload) => {
@@ -260,6 +262,18 @@ fromPayloadToObject = payload => {
   object.location = payload.location.location.value
   return object;
 }
+
+app.post('https://esnoviedo-bot.herokuapp.com/create-cover', function(req, res){
+  const config = {
+    headers: {Authorization: 'Bearer ' + process.env.SLACK_ACCESS_TOKEN}
+  }
+  request_view.trigger_id = payload.trigger_id
+  const body = request_view
+
+ axios.post('https://slack.com/api/views.open', body, config)
+ res.status(200);
+ res.send()
+})
 
 
 
