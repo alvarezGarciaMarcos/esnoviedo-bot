@@ -13,6 +13,7 @@ const request_view = {
   trigger_id: '',
   view: {
     "type": "modal",
+    "callback_id" : "cover-submission",
     "title": {
       "type": "plain_text",
       "text": "Pedir una portada",
@@ -20,12 +21,12 @@ const request_view = {
     },
     "submit": {
       "type": "plain_text",
-      "text": "Ask",
+      "text": "Pedir",
       "emoji": true
     },
     "close": {
       "type": "plain_text",
-      "text": "Cancel",
+      "text": "Cancelar",
       "emoji": true
     },
     "blocks": [
@@ -122,9 +123,13 @@ const request_view = {
         },
         "label": {
           "type": "plain_text",
-          "text": "Comenetarios para la persona que diseña",
+          "text": "Comentarios para la persona que diseña",
           "emoji": true
-        }
+        },
+                  "hint": {
+                      "type": "plain_text",
+                      "text": "Si no hay ninguno, escribir: ' . '"
+                  }
       },
       {
         "type": "input",
@@ -146,13 +151,18 @@ const request_view = {
       {
         "type": "input",
         "element": {
-          "type": "plain_text_input"
+          "type": "plain_text_input",
+          "multiline": true
         },
         "label": {
           "type": "plain_text",
-          "text": "Hora del evento",
+          "text": "MPs",
           "emoji": true
-        }
+        },
+                  "hint": {
+                      "type": "plain_text",
+                      "text": "Escribir uno por línea"
+                  }
       },
       {
         "type": "input",
@@ -163,7 +173,11 @@ const request_view = {
           "type": "plain_text",
           "text": "Precio",
           "emoji": true
-        }
+        },
+                  "hint": {
+                      "type": "plain_text",
+                      "text": "Si no tiene precio, escribir 0"
+                  }
       },
       {
         "type": "input",
@@ -177,7 +191,8 @@ const request_view = {
         }
       }
     ]
-  }}
+  } 
+}
 const app = express();
 
 app.use('/', slackInteractions.requestListener());
@@ -197,13 +212,11 @@ slackInteractions.action({type: 'message_action'}, (payload, respond) => {
     request_view.trigger_id = payload.trigger_id
     const body = request_view
 
-    /* console.log('payload', payload)
-    console.log('config', config)
-    console.log('body', body)
-     */
-    
    axios.post('https://slack.com/api/views.open', body, config)
-      .then(console.log).catch(console.log)
+})
+
+slackInteractions.viewSubmission('cover-submission', (payload) => {
+    console.log(payload)
 })
 
 
