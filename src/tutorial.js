@@ -217,6 +217,12 @@ app.use('/', slackInteractions.requestListener());
 app.use(bodyParser());
 
 
+const server = createServer(app);
+
+server.listen(port, () => {
+    console.log(`Listening for events on ${server.address().port}`);
+
+
 app.post('/cover', function(req, res){
   const config = {
     headers: {Authorization: 'Bearer ' + process.env.SLACK_ACCESS_TOKEN}
@@ -229,11 +235,6 @@ app.post('/cover', function(req, res){
  res.send()
 })
 
-
-const server = createServer(app);
-
-server.listen(port, () => {
-    console.log(`Listening for events on ${server.address().port}`);
   });
 
 slackInteractions.action({type: 'message_action'}, (payload, respond) => {
