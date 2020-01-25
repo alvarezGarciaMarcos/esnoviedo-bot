@@ -6,7 +6,7 @@ const { WebClient } = require('@slack/web-api')
 const { createMessageAdapter } = require('@slack/interactive-messages')
 const slackSigningSecret = process.env.SLACK_SIGNIN_SECRET;
 const slackInteractions = createMessageAdapter(slackSigningSecret)
-
+const web = new WebClient(process.env.SLACK_ACCESS_TOKEN)
 
 const port = process.env.PORT;
 const request_view = {
@@ -234,11 +234,31 @@ slackInteractions.action({type: 'message_action'}, (payload, respond) => {
 
 slackInteractions.viewSubmission('cover-submission', (payload) => {
     console.log('payload', payload.view.state.values)
+    let cover = fromPayloadToObject(payload.view.state.values)
+    web.chat.postMessage({
+      text: cover,
+      channel: '#general'
+    })
+    
 })
 
 slackInteractions.action({type: 'static_select'}, (payload, respond) => {
   
 })
+
+
+
+fromPayloadToObject = payload => {
+  var object = {
+    title: payload.title.title.value,
+    comite: payload.comite.comite.selected_option,
+    comments: payload.comments.comments.value,
+    mp: payload.mp.mp.value,
+    price: payload.price.price.value,
+    location: payload.location.location.value
+  }
+  return object;
+}
 
 
 
