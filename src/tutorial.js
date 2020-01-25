@@ -10,6 +10,8 @@ const slackInteractions = createMessageAdapter(slackSigningSecret)
 
 const port = process.env.PORT;
 const view = {
+  trigger_id: '',
+  view: {
 	type: "modal",
 	title: {
 		type: "plain_text",
@@ -67,7 +69,8 @@ const view = {
 			}
 		}
 	]
-}
+}}
+
 /* const view = {
   trigger_id: "156772938.1827394",
   view: {
