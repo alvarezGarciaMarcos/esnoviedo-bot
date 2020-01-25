@@ -43,65 +43,6 @@ const request_view = {
       },
       {
         "type": "input",
-        "block_id": "comite",
-        "element": {
-          "type": "static_select",
-          "placeholder": {
-            "type": "plain_text",
-            "text": "Elige el comité",
-            "emoji": true
-          },
-          "options": [
-            {
-              "text": {
-                "type": "plain_text",
-                "text": "Lúdicas",
-                "emoji": true
-              },
-              "value": "ludicas"
-            },
-            {
-              "text": {
-                "type": "plain_text",
-                "text": "Cultura",
-                "emoji": true
-              },
-              "value": "cultura"
-            },
-            {
-              "text": {
-                "type": "plain_text",
-                "text": "Impacto Social",
-                "emoji": true
-              },
-              "value": "impacto_social"
-            },
-            {
-              "text": {
-                "type": "plain_text",
-                "text": "Viajes",
-                "emoji": true
-              },
-              "value": "viajes"
-            },
-            {
-              "text": {
-                "type": "plain_text",
-                "text": "Deportes",
-                "emoji": true
-              },
-              "value": "deportes"
-            }
-          ]
-        },
-        "label": {
-          "type": "plain_text",
-          "text": "Comité que solicita la portada",
-          "emoji": true
-        }
-      },
-      {
-        "type": "input",
         "block_id": "dl",
         "element": {
           "type": "datepicker",
@@ -195,6 +136,66 @@ const request_view = {
         "label": {
           "type": "plain_text",
           "text": "Localización",
+          "emoji": true
+        }
+      },
+      {
+        "type": "input",
+              "block_id": "comite",
+        "element": {
+          "type": "static_select",
+                      "action_id": "comite",
+          "placeholder": {
+            "type": "plain_text",
+            "text": "Select an item",
+            "emoji": true
+          },
+          "options": [
+              {
+                "text": {
+                  "type": "plain_text",
+                  "text": "Lúdicas",
+                  "emoji": true
+                },
+                "value": "ludicas"
+              },
+              {
+                "text": {
+                  "type": "plain_text",
+                  "text": "Cultura",
+                  "emoji": true
+                },
+                "value": "cultura"
+              },
+              {
+                "text": {
+                  "type": "plain_text",
+                  "text": "Impacto Social",
+                  "emoji": true
+                },
+                "value": "impacto_social"
+              },
+              {
+                "text": {
+                  "type": "plain_text",
+                  "text": "Viajes",
+                  "emoji": true
+                },
+                "value": "viajes"
+              },
+              {
+                "text": {
+                  "type": "plain_text",
+                  "text": "Deportes",
+                  "emoji": true
+                },
+                "value": "deportes"
+              }
+            ]
+        },
+        "label": {
+          "type": "plain_text",
+          "text": "Label",
           "emoji": true
         }
       }
