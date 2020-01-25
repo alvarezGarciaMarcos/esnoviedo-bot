@@ -43,9 +43,9 @@ const request_view = {
       },
       {
         "type": "input",
+        "block_id": "comite",
         "element": {
           "type": "static_select",
-          "block_id": "comite",
           "placeholder": {
             "type": "plain_text",
             "text": "Elige el comité",
