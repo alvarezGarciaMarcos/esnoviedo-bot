@@ -216,7 +216,7 @@ slackInteractions.action({type: 'message_action'}, (payload, respond) => {
 })
 
 slackInteractions.viewSubmission('cover-submission', (payload) => {
-    console.log(payload)
+    console.log(payload.view.state)
 })
 
 
