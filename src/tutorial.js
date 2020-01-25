@@ -34,6 +34,7 @@ const request_view = {
         "type": "input",
         "block_id": "title",
         "element": {
+          "action_id": "title",
           "type": "plain_text_input"
         },
         "label": {
@@ -106,6 +107,7 @@ const request_view = {
         "type": "input",
         "block_id": "dl",
         "element": {
+          "action_id": "dl",
           "type": "datepicker",
           "initial_date": "2020-01-01",
           "placeholder": {
@@ -124,6 +126,7 @@ const request_view = {
         "type": "input",
         "block_id": "comments",
         "element": {
+          "action_id": "comments",
           "type": "plain_text_input",
           "multiline": true
         },
@@ -141,6 +144,7 @@ const request_view = {
         "type": "input",
         "block_id": "event-date",
         "element": {
+          "action_id": "event-date",
           "type": "datepicker",
           "initial_date": "2020-01-01",
           "placeholder": {
@@ -159,6 +163,7 @@ const request_view = {
         "type": "input",
         "block_id": "mp",
         "element": {
+          "action_id": "mp",
           "type": "plain_text_input",
           "multiline": true
         },
@@ -176,6 +181,7 @@ const request_view = {
         "type": "input",
         "block_id": "price",
         "element": {
+          "action_id": "price",
           "type": "plain_text_input"
         },
         "label": {
@@ -185,13 +191,14 @@ const request_view = {
         },
         "hint": {
           "type": "plain_text",
-          "text": "Si no tiene precio, escribir 0"
+          "text": "Si no tiene precio, escribir '0'"
         }
       },
       {
         "type": "input",
         "block_id": "location",
         "element": {
+          "action_id": "location",
           "type": "plain_text_input"
         },
         "label": {
