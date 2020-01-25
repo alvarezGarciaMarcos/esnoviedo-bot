@@ -52,7 +52,7 @@ server.listen(port, () => {
 
 slackInteractions.action({type: 'message_action'}, (payload, respond) => {
     const config = {
-      headers: {Authorization: `Bearer ${process.env.SLACK_ACCESS_TOKEN}`}
+      headers: {Authorization: 'Bearer' + process.env.SLACK_ACCESS_TOKEN}
     }
     view.trigger_id = payload.trigger_id
     const body = view
