@@ -13,7 +13,6 @@ const request_view = {
   trigger_id: '',
   view: {
     "type": "modal",
-    "callback_id" : "cover-submission",
     "title": {
       "type": "plain_text",
       "text": "Pedir una portada",
@@ -32,7 +31,7 @@ const request_view = {
     "blocks": [
       {
         "type": "input",
-        "block_id" : "title",
+        "block_id": "title",
         "element": {
           "type": "plain_text_input"
         },
@@ -43,18 +42,13 @@ const request_view = {
         }
       },
       {
-        "type": "section",
-        "block_id": "comite",
-        "text": {
-          "type": "mrkdwn",
-          "text": "Comité que solicitala portada"
-        },
-        "accessory": {
-          "action_id": "comite-selection",
+        "type": "input",
+        "element": {
           "type": "static_select",
+          "block_id": "comite",
           "placeholder": {
             "type": "plain_text",
-            "text": "Selecciona un comité",
+            "text": "Elige el comité",
             "emoji": true
           },
           "options": [
@@ -99,6 +93,11 @@ const request_view = {
               "value": "deportes"
             }
           ]
+        },
+        "label": {
+          "type": "plain_text",
+          "text": "Comité que solicita la portada",
+          "emoji": true
         }
       },
       {
@@ -121,7 +120,7 @@ const request_view = {
       },
       {
         "type": "input",
-        "block_id":"comments",
+        "block_id": "comments",
         "element": {
           "type": "plain_text_input",
           "multiline": true
@@ -131,10 +130,10 @@ const request_view = {
           "text": "Comentarios para la persona que diseña",
           "emoji": true
         },
-                  "hint": {
-                      "type": "plain_text",
-                      "text": "Si no hay ninguno, escribir: ' . '"
-                  }
+        "hint": {
+          "type": "plain_text",
+          "text": "Si no hay ninguno, escribir: ' . '"
+        }
       },
       {
         "type": "input",
@@ -166,10 +165,10 @@ const request_view = {
           "text": "MPs",
           "emoji": true
         },
-                  "hint": {
-                      "type": "plain_text",
-                      "text": "Escribir uno por línea"
-                  }
+        "hint": {
+          "type": "plain_text",
+          "text": "Escribir uno por línea"
+        }
       },
       {
         "type": "input",
@@ -182,10 +181,10 @@ const request_view = {
           "text": "Precio",
           "emoji": true
         },
-                  "hint": {
-                      "type": "plain_text",
-                      "text": "Si no tiene precio, escribir 0"
-                  }
+        "hint": {
+          "type": "plain_text",
+          "text": "Si no tiene precio, escribir 0"
+        }
       },
       {
         "type": "input",
