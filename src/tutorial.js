@@ -58,9 +58,11 @@ slackInteractions.action({type: 'message_action'}, (payload, respond) => {
     const body = view
 
     console.log('payload', payload)
-    axios.post('https://slack.com/api/views.open', body, config)
+    console.log('config', config)
+    console.log('body', body)
+/*     axios.post('https://slack.com/api/views.open', body, config)
       .then(console.log).catch(console.log)
-
+ */
 })
 
 
