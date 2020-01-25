@@ -65,7 +65,8 @@ slackInteractions.action({type: 'message_action'}, (payload, respond) => {
       url: 'https://slack.com/api/views.open',
       headers: {
         'Authorization': `Bearer ${process.env.SLACK_ACCESS_TOKEN}`
-      }
+      },
+      body: view
     },
     function(error, response, body){
       console.log(response)
