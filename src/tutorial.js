@@ -32,6 +32,7 @@ const request_view = {
     "blocks": [
       {
         "type": "input",
+        "block_id" : "title",
         "element": {
           "type": "plain_text_input"
         },
@@ -43,6 +44,7 @@ const request_view = {
       },
       {
         "type": "section",
+        "block_id": "comite",
         "text": {
           "type": "mrkdwn",
           "text": "Comité que solicitala portada"
@@ -101,6 +103,7 @@ const request_view = {
       },
       {
         "type": "input",
+        "block_id": "dl",
         "element": {
           "type": "datepicker",
           "initial_date": "2020-01-01",
@@ -118,6 +121,7 @@ const request_view = {
       },
       {
         "type": "input",
+        "block_id":"comments",
         "element": {
           "type": "plain_text_input",
           "multiline": true
@@ -134,6 +138,7 @@ const request_view = {
       },
       {
         "type": "input",
+        "block_id": "event-date",
         "element": {
           "type": "datepicker",
           "initial_date": "2020-01-01",
@@ -151,6 +156,7 @@ const request_view = {
       },
       {
         "type": "input",
+        "block_id": "mp",
         "element": {
           "type": "plain_text_input",
           "multiline": true
@@ -167,6 +173,7 @@ const request_view = {
       },
       {
         "type": "input",
+        "block_id": "price",
         "element": {
           "type": "plain_text_input"
         },
@@ -182,6 +189,7 @@ const request_view = {
       },
       {
         "type": "input",
+        "block_id": "location",
         "element": {
           "type": "plain_text_input"
         },
