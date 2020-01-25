@@ -220,12 +220,9 @@ slackInteractions.viewSubmission('cover-submission', (payload) => {
     
 })
 
-slackInteractions.action({type: 'static_selection'}, (payload, respond) => {
-  console.log('static_selection', payload)
+slackInteractions.action({type: 'static_select'}, (payload, respond) => {
+  console.log('static_select', payload)
 })
 
-slackInteractions.action({type: 'dialog_submission'}, (payload, respond) => {
-  console.log('dialog_submission', payload)
-})
 
 
