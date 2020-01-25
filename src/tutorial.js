@@ -249,14 +249,15 @@ slackInteractions.action({type: 'static_select'}, (payload, respond) => {
 
 
 fromPayloadToObject = payload => {
-  var object = {
-    title: payload.title.title.value,
-    comite: payload.comite.comite.selected_option,
-    comments: payload.comments.comments.value,
-    mp: payload.mp.mp.value,
-    price: payload.price.price.value,
-    location: payload.location.location.value
-  }
+  var object = {}
+
+  object.title =  payload.title.title.value
+  object.comite = payload.comite.comite.selected_option.text.text
+  if(payload.comments.comments.value != '.')
+    object.comments = payload.comments.comments.value
+  object.mp = payload.mp.mp.value
+  object.price = payload.price.price.value
+  object.location = payload.location.location.value
   return object;
 }
 
