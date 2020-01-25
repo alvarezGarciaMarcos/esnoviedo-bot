@@ -13,6 +13,7 @@ const request_view = {
   trigger_id: '',
   view: {
     "type": "modal",
+    "callback_id": "cover-submission",
     "title": {
       "type": "plain_text",
       "text": "Pedir una portada",
@@ -38,6 +39,66 @@ const request_view = {
         "label": {
           "type": "plain_text",
           "text": "Título del evento",
+          "emoji": true
+        }
+      },
+      {
+        "type": "input",
+        "block_id": "comite",
+        "element": {
+          "type": "static_select",
+          "action_id": "comite",
+          "placeholder": {
+            "type": "plain_text",
+            "text": "Selecciona un comité",
+            "emoji": true
+          },
+          "options": [
+            {
+              "text": {
+                "type": "plain_text",
+                "text": "Lúdicas",
+                "emoji": true
+              },
+              "value": "ludicas"
+            },
+            {
+              "text": {
+                "type": "plain_text",
+                "text": "Cultura",
+                "emoji": true
+              },
+              "value": "cultura"
+            },
+            {
+              "text": {
+                "type": "plain_text",
+                "text": "Impacto Social",
+                "emoji": true
+              },
+              "value": "impacto_social"
+            },
+            {
+              "text": {
+                "type": "plain_text",
+                "text": "Viajes",
+                "emoji": true
+              },
+              "value": "viajes"
+            },
+            {
+              "text": {
+                "type": "plain_text",
+                "text": "Deportes",
+                "emoji": true
+              },
+              "value": "deportes"
+            }
+          ]
+        },
+        "label": {
+          "type": "plain_text",
+          "text": "Comité que solicita la portada",
           "emoji": true
         }
       },
