@@ -217,20 +217,20 @@ app.post("/interactions", function(req, res) {
     headers: { Authorization: "Bearer " + process.env.SLACK_ACCESS_TOKEN }
   };
   let parsed_request = JSON.parse(req.body.payload) 
-  console.log(parsed_request.view)
-  
-   const event_cover = {
-    title: parsed_request.view.state.values.title.value,
-    mp: parsed_request.view.state.values.mp.value,
-    dl: parsed_request.view.state.values.dl.value,
-    location: parsed_request.view.state.values.location.value,
-    comments: parsed_request.view.state.values.comments.value,
-    event_date: parsed_request.view.state.values["event-date"].value,
-    price: parsed_request.view.state.values.price.value,
-    comite: parsed_request.view.state.values.comite.comite.selected_option.text.text
-  };
-
-  const body = {
+  const event_cover = {
+      title: parsed_request.view.state.values.title.value,
+      mp: parsed_request.view.state.values.mp.value,
+      dl: parsed_request.view.state.values.dl.value,
+      location: parsed_request.view.state.values.location.value,
+      comments: parsed_request.view.state.values.comments.value,
+      event_date: parsed_request.view.state.values["event-date"].value,
+      price: parsed_request.view.state.values.price.value,
+      comite: parsed_request.view.state.values.comite.comite.selected_option.text.text
+    };
+    
+    console.log(event_cover)
+    
+    const body = {
     text: event_cover,
     channel: "#general"
   };
