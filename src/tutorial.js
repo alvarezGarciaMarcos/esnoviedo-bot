@@ -227,7 +227,6 @@ app.post("/interactions", function(req, res) {
       price: parsed_request.view.state.values.price.price.value,
       comite: parsed_request.view.state.values.comite.comite.selected_option.text.text
     };
-
     let blocks = [
         {
             "type": "section",
@@ -275,6 +274,9 @@ app.post("/interactions", function(req, res) {
         }
     ]
 
+    blocks = populateMessage(blocks, event_cover);
+    
+
     const body = {
     blocks: blocks,
     channel: "#general",
@@ -284,6 +286,18 @@ app.post("/interactions", function(req, res) {
   axios.post("https://slack.com/api/chat.postMessage", body, config);
   
 });
+
+function populateMessage(blocks, event_cover){
+    blocks[1].fields[0].text += event_cover.title
+    blocks[1].fields[1].text += event_cover.dl
+    blocks[1].fields[2].text += event_cover.mp
+    blocks[1].fields[3].text += event_cover.event_date
+    blocks[1].fields[4].text += event_cover.location
+    blocks[1].fields[5].text += event_cover.comite
+    blocks[1].fields[6].text += event_cover.price
+    blocks[1].fields[7].text += event_cover.comments
+    return blocks;
+}
 app.post("/cover", function(req, res) {
   res.status(200).end();
   let payload = {
