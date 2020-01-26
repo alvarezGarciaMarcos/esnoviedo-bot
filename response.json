@@ -9,9 +9,9 @@
   },
   "api_app_id": "AT4NX857G",
   "token": "1smBtlsoGjqCmAHiSjkyqcZ5",
-  "trigger_id": "912314637409.592701374656.c7ba2cc596ebfa6189b82f7807ae6dcc",
+  "trigger_id": "922252948676.592701374656.f17c6925ce97562b92c0326a940b31b7",
   "view": {
-    "id": "VT4EERS2U",
+    "id": "VT6T159DL",
     "team_id": "THELMB0KA",
     "type": "modal",
     "blocks": [
@@ -190,9 +190,9 @@
         "title": {
           "title": { "type": "plain_text_input", "value": "Martes de Tapas" }
         },
-        "dl": { "dl": { "type": "datepicker", "selected_date": "2020-01-18" } },
+        "dl": { "dl": { "type": "datepicker", "selected_date": "2020-01-01" } },
         "event-date": {
-          "event-date": { "type": "datepicker", "selected_date": "2020-01-11" }
+          "event-date": { "type": "datepicker", "selected_date": "2020-01-01" }
         },
         "comite": {
           "comite": {
@@ -200,27 +200,22 @@
             "selected_option": {
               "text": {
                 "type": "plain_text",
-                "text": "L\u00fadicas",
+                "text": "Impacto Social",
                 "emoji": true
               },
-              "value": "ludicas"
+              "value": "impacto_social"
             }
           }
         },
         "comments": {
-          "comments": { "type": "plain_text_input", "value": "." }
+          "comments": { "type": "plain_text_input", "value": "K" }
         },
-        "mp": {
-          "mp": {
-            "type": "plain_text_input",
-            "value": "16:00 - Parque de Invierno"
-          }
-        },
-        "price": { "price": { "type": "plain_text_input", "value": "0" } },
-        "location": { "location": { "type": "plain_text_input", "value": "." } }
+        "mp": { "mp": { "type": "plain_text_input", "value": "L" } },
+        "price": { "price": { "type": "plain_text_input", "value": "L" } },
+        "location": { "location": { "type": "plain_text_input", "value": "M" } }
       }
     },
-    "hash": "1580043155.cd9a9b59",
+    "hash": "1580073457.2835021c",
     "title": {
       "type": "plain_text",
       "text": "Pedir una portada",
@@ -231,7 +226,7 @@
     "close": { "type": "plain_text", "text": "Cancelar", "emoji": true },
     "submit": { "type": "plain_text", "text": "Pedir", "emoji": true },
     "previous_view_id": null,
-    "root_view_id": "VT4EERS2U",
+    "root_view_id": "VT6T159DL",
     "app_id": "AT4NX857G",
     "external_id": "",
     "app_installed_team_id": "THELMB0KA",

@@ -216,7 +216,7 @@ app.post("/interactions", function(req, res) {
   const config = {
     headers: { Authorization: "Bearer " + process.env.SLACK_ACCESS_TOKEN }
   };
-  console.log(req.body.payload)
+  console.log(req.body.payload.view.state.values)
 /*   const event_cover = {
     title: req.body.payload.view.state.values.title.value,
     mp: req.body.payload.view.state.values.mp.value,
@@ -233,7 +233,7 @@ app.post("/interactions", function(req, res) {
     channel: "#general"
   };
    */
-  axios.post("https://slack.com/api/chat.postMessage", body, config);
+  //axios.post("https://slack.com/api/chat.postMessage", body, config);
 });
 app.post("/cover", function(req, res) {
   res.status(200).end();
