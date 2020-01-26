@@ -217,6 +217,7 @@ app.post("/interactions", function(req, res) {
 });
 app.post("/cover", function(req, res) {
     res.status(200).end();
+    console.log(req);
     openDialog();
 });
 
@@ -231,5 +232,5 @@ function openDialog() {
 }
 
 app.listen(port, function() {
-  console.log("Listening on port 3000!");
+  console.log(`Listening on port ${port}`);
 });
