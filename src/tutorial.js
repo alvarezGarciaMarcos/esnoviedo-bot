@@ -212,8 +212,14 @@ app.get("/", function(req, res) {
 });
 
 app.post("/interactions", function(req, res) {
-  req.status(200).end;
-  console.log(req);
+  res.status(200).end();
+  const config = {
+    headers: { Authorization: "Bearer " + process.env.SLACK_ACCESS_TOKEN }
+  };
+  const message = {
+      'text': 
+  }
+  
 });
 app.post("/cover", function(req, res) {
   res.status(200).end();
@@ -230,6 +236,7 @@ function openDialog(payload) {
   const config = {
     headers: { Authorization: "Bearer " + process.env.SLACK_ACCESS_TOKEN }
   };
+
   request_view.trigger_id = payload.trigger_id;
   request_view.view.blocks[0].element['initial_value'] = payload.text;
   const body = request_view;
