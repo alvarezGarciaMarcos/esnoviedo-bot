@@ -231,7 +231,9 @@ function openDialog(payload) {
     headers: { Authorization: "Bearer " + process.env.SLACK_ACCESS_TOKEN }
   };
   request_view.trigger_id = payload.trigger_id;
+  request_view.view.blocks[0].element['initial_value'] = payload.text;
   const body = request_view;
+
 
 
   axios.post("https://slack.com/api/views.open", body, config);
