@@ -216,7 +216,24 @@ app.post("/interactions", function(req, res) {
   const config = {
     headers: { Authorization: "Bearer " + process.env.SLACK_ACCESS_TOKEN }
   };
-  console.log(req.body.payload)
+  const event_cover = {
+      title: req.body.payload.view.state.values.title.value,
+      mp: req.body.payload.view.state.values.mp.value,
+      dl: req.body.payload.view.state.values.dl.value,
+      location: req.body.payload.view.state.values.location.value,
+      comments: req.body.payload.view.state.values.comments.value,
+      event_date: req.body.payload.view.state.values["event_date"].value,
+      price: req.body.payload.view.state.values.price.value,
+      comite: req.body.payload.view.state.values.comite.comite.selected_option.text.text
+  }
+
+  const body = {
+      'text': event_cover,
+      'channel': '#general'
+  }
+
+  axios.post("https://slack.com/api/chat.postMessage", body, config)
+  
   
 });
 app.post("/cover", function(req, res) {
