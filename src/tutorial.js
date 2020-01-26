@@ -219,23 +219,23 @@ app.post("/interactions", function(req, res) {
   let parsed_request = JSON.parse(req.body.payload) 
   console.log(parsed_request.view)
   
-/*   const event_cover = {
-    title: req.body.payload.view.state.values.title.value,
-    mp: req.body.payload.view.state.values.mp.value,
-    dl: req.body.payload.view.state.values.dl.value,
-    location: req.body.payload.view.state.values.location.value,
-    comments: req.body.payload.view.state.values.comments.value,
-    event_date: req.body.payload.view.state.values["event_date"].value,
-    price: req.body.payload.view.state.values.price.value,
-    comite: req.body.payload.view.state.values.comite.comite.selected_option.text.text
+   const event_cover = {
+    title: parsed_request.view.state.values.title.value,
+    mp: parsed_request.view.state.values.mp.value,
+    dl: parsed_request.view.state.values.dl.value,
+    location: parsed_request.view.state.values.location.value,
+    comments: parsed_request.view.state.values.comments.value,
+    event_date: parsed_request.view.state.values["event_date"].value,
+    price: parsed_request.view.state.values.price.value,
+    comite: parsed_request.view.state.values.comite.comite.selected_option.text.text
   };
 
   const body = {
     text: event_cover,
     channel: "#general"
   };
-   */
-  //axios.post("https://slack.com/api/chat.postMessage", body, config);
+   
+  axios.post("https://slack.com/api/chat.postMessage", body, config);
 });
 app.post("/cover", function(req, res) {
   res.status(200).end();
