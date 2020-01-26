@@ -1,7 +1,7 @@
 var express = require("express");
 var app = express();
 var axios = require("axios");
-
+const bodyParser = require('body-parser')
 const request_view = {
   trigger_id: "",
   view: {
@@ -205,6 +205,8 @@ const request_view = {
 };
 
 var port = process.env.PORT;
+app.use(bodyParser())
+
 app.get("/", function(req, res) {
   res.send("Hello World!");
 });
@@ -230,7 +232,7 @@ function openDialog(payload) {
   };
   request_view.trigger_id = payload.trigger_id;
   const body = request_view;
-  
+
 
   axios.post("https://slack.com/api/views.open", body, config);
 }
