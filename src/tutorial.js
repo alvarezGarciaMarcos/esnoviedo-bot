@@ -225,7 +225,7 @@ app.post("/interactions", function(req, res) {
     dl: parsed_request.view.state.values.dl.value,
     location: parsed_request.view.state.values.location.value,
     comments: parsed_request.view.state.values.comments.value,
-    event_date: parsed_request.view.state.values["event_date"].value,
+    event_date: parsed_request.view.state.values["event-date"].value,
     price: parsed_request.view.state.values.price.value,
     comite: parsed_request.view.state.values.comite.comite.selected_option.text.text
   };
