@@ -216,7 +216,7 @@ app.post("/interactions", function(req, res) {
   const config = {
     headers: { Authorization: "Bearer " + process.env.SLACK_ACCESS_TOKEN }
   };
-  
+  console.log(req.body.payload)
   
 });
 app.post("/cover", function(req, res) {
