@@ -1,12 +1,15 @@
 var express = require("express");
 var app = express();
 var axios = require("axios");
+
+var port = process.env.PORT || 3000;
 app.get("/", function(req, res) {
   res.send("Hello World!");
 });
 
 app.post("/interactions", function(req, res) {});
 app.post("/cover", function(req, res) {
+    res.status(200).end();
     openDialog();
 });
 
@@ -20,6 +23,6 @@ function openDialog() {
   axios.post("https://slack.com/api/views.open", body, config);
 }
 
-app.listen(3000, function() {
-  console.log("Example app listening on port 3000!");
+app.listen(port, function() {
+  console.log("Listening on port 3000!");
 });
