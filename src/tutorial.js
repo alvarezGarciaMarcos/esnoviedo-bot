@@ -204,13 +204,13 @@ const request_view = {
     } 
   }
 
-var port = process.env.PORT || 3000;
+var port = process.env.PORT;
 app.get("/", function(req, res) {
   res.send("Hello World!");
 });
 
 app.post("/interactions", function(req, res) {
-    req.status(200).end();
+    req.status(200).end
     console.log(req);
 
 
