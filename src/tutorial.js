@@ -232,7 +232,7 @@ app.post("/interactions", function(req, res) {
             "type": "section",
             "text": {
                 "type": "mrkdwn",
-                "text": "You have a new request:\n*Fred Enriquez -Lúdicas*"
+                "text": "Nueva portada:\n"
             }
         },
         {
@@ -296,6 +296,7 @@ function populateMessage(blocks, event_cover){
     blocks[1].fields[5].text += event_cover.comite
     blocks[1].fields[6].text += event_cover.price
     blocks[1].fields[7].text += event_cover.comments
+    blocks[0].text.text += event_cover.private_metadata
     return blocks;
 }
 app.post("/cover", function(req, res) {
@@ -317,6 +318,7 @@ function openDialog(payload) {
   request_view.trigger_id = payload.trigger_id;
   request_view.view.blocks[0].element["initial_value"] = payload.text;
   const body = request_view;
+  request_view.private_metadata = payload.username
 
   axios.post("https://slack.com/api/views.open", body, config);
 }
