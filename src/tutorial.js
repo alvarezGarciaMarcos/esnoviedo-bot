@@ -217,14 +217,14 @@ app.post("/interactions", function(req, res) {
     headers: { Authorization: "Bearer " + process.env.SLACK_ACCESS_TOKEN }
   };
   const event_cover = {
-      title: req.body.payload.view.state.values.title.value,
-      mp: req.body.payload.view.state.values.mp.value,
-      dl: req.body.payload.view.state.values.dl.value,
-      location: req.body.payload.view.state.values.location.value,
-      comments: req.body.payload.view.state.values.comments.value,
-      event_date: req.body.payload.view.state.values["event_date"].value,
-      price: req.body.payload.view.state.values.price.value,
-      comite: req.body.payload.view.state.values.comite.comite.selected_option.text.text
+      title: req.body.view.state.values.title.value,
+      mp: req.body.view.state.values.mp.value,
+      dl: req.body.view.state.values.dl.value,
+      location: req.body.view.state.values.location.value,
+      comments: req.body.view.state.values.comments.value,
+      event_date: req.body.view.state.values["event_date"].value,
+      price: req.body.view.state.values.price.value,
+      comite: req.body.view.state.values.comite.comite.selected_option.text.text
   }
 
   const body = {
