@@ -1,7 +1,7 @@
 var express = require("express");
 var app = express();
 var axios = require("axios");
-const bodyParser = require('body-parser')
+const bodyParser = require("body-parser");
 const request_view = {
   trigger_id: "",
   view: {
@@ -205,7 +205,7 @@ const request_view = {
 };
 
 var port = process.env.PORT;
-app.use(bodyParser())
+app.use(bodyParser());
 
 app.get("/", function(req, res) {
   res.send("Hello World!");
@@ -216,25 +216,24 @@ app.post("/interactions", function(req, res) {
   const config = {
     headers: { Authorization: "Bearer " + process.env.SLACK_ACCESS_TOKEN }
   };
+  console.log(req.body);
   const event_cover = {
-      title: req.body.view.state.values.title.value,
-      mp: req.body.view.state.values.mp.value,
-      dl: req.body.view.state.values.dl.value,
-      location: req.body.view.state.values.location.value,
-      comments: req.body.view.state.values.comments.value,
-      event_date: req.body.view.state.values["event_date"].value,
-      price: req.body.view.state.values.price.value,
-      comite: req.body.view.state.values.comite.comite.selected_option.text.text
-  }
+    title: req.view.state.values.title.value,
+    mp: req.view.state.values.mp.value,
+    dl: req.view.state.values.dl.value,
+    location: req.view.state.values.location.value,
+    comments: req.view.state.values.comments.value,
+    event_date: req.view.state.values["event_date"].value,
+    price: req.view.state.values.price.value,
+    comite: req.view.state.values.comite.comite.selected_option.text.text
+  };
 
   const body = {
-      'text': event_cover,
-      'channel': '#general'
-  }
+    text: event_cover,
+    channel: "#general"
+  };
 
-  axios.post("https://slack.com/api/chat.postMessage", body, config)
-  
-  
+  axios.post("https://slack.com/api/chat.postMessage", body, config);
 });
 app.post("/cover", function(req, res) {
   res.status(200).end();
@@ -253,10 +252,8 @@ function openDialog(payload) {
   };
 
   request_view.trigger_id = payload.trigger_id;
-  request_view.view.blocks[0].element['initial_value'] = payload.text;
+  request_view.view.blocks[0].element["initial_value"] = payload.text;
   const body = request_view;
-
-
 
   axios.post("https://slack.com/api/views.open", body, config);
 }
