@@ -228,58 +228,57 @@ app.post("/interactions", function(req, res) {
       comite: parsed_request.view.state.values.comite.comite.selected_option.text.text
     };
 
-    let message_template = {
-        "blocks": [
-            {
-                "type": "section",
-                "text": {
-                    "type": "mrkdwn",
-                    "text": "You have a new request:\n*Fred Enriquez -Lúdicas*"
-                }
-            },
-            {
-                "type": "section",
-                "fields": [
-                    {
-                        "type": "mrkdwn",
-                        "text": "*Título:*\n"
-                    },
-                    {
-                        "type": "mrkdwn",
-                        "text": "*DL:*\n"
-                    },
-                    {
-                        "type": "mrkdwn",
-                        "text": "*MP(s):*\n"
-                    },
-                    {
-                        "type": "mrkdwn",
-                        "text": "*Fecha del Evento:*\n"
-                    },
-                    {
-                        "type": "mrkdwn",
-                        "text": "*Localización:*\n"
-                    },
-                    {
-                        "type": "mrkdwn",
-                        "text": "*Precio:*\n"
-                    },
-                    {
-                        "type": "mrkdwn",
-                        "text": "*Comité:*\n"
-                    },
-                    {
-                        "type": "mrkdwn",
-                        "text": "*Comentarios para quién diseña:*\n"
-                    }
-                ]
+    let blocks = [
+        {
+            "type": "section",
+            "text": {
+                "type": "mrkdwn",
+                "text": "You have a new request:\n*Fred Enriquez -Lúdicas*"
             }
-        ]
-    }
+        },
+        {
+            "type": "section",
+            "fields": [
+                {
+                    "type": "mrkdwn",
+                    "text": "*Título:*\n"
+                },
+                {
+                    "type": "mrkdwn",
+                    "text": "*DL:*\n"
+                },
+                {
+                    "type": "mrkdwn",
+                    "text": "*MP(s):*\n"
+                },
+                {
+                    "type": "mrkdwn",
+                    "text": "*Fecha del Evento:*\n"
+                },
+                {
+                    "type": "mrkdwn",
+                    "text": "*Localización:*\n"
+                },
+                {
+                    "type": "mrkdwn",
+                    "text": "*Precio:*\n"
+                },
+                {
+                    "type": "mrkdwn",
+                    "text": "*Comité:*\n"
+                },
+                {
+                    "type": "mrkdwn",
+                    "text": "*Comentarios para quién diseña:*\n"
+                }
+            ]
+        }
+    ]
 
     const body = {
-    message_template,
-    channel: "#general"
+    blocks: blocks,
+    channel: "#general",
+    text: '¡Nueva petición de portada!'
   };
    
   axios.post("https://slack.com/api/chat.postMessage", body, config);
