@@ -278,7 +278,7 @@ app.post("/interactions", function(req, res) {
     }
 
     const body = {
-    text: message_template,
+    message_template,
     channel: "#general"
   };
    
