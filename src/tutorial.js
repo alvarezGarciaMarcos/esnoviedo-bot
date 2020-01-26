@@ -220,23 +220,70 @@ app.post("/interactions", function(req, res) {
   const event_cover = {
       title: parsed_request.view.state.values.title.title.value,
       mp: parsed_request.view.state.values.mp.mp.value,
-      dl: parsed_request.view.state.values.dl.selected_date,
-      location: parsed_request.view.state.values.location.value,
-      comments: parsed_request.view.state.values.comments.value,
+      dl: parsed_request.view.state.values.dl.dl.selected_date,
+      location: parsed_request.view.state.values.location.location.value,
+      comments: parsed_request.view.state.values.comments.comments.value,
       event_date: parsed_request.view.state.values["event-date"]["event-date"].selected_date,
       price: parsed_request.view.state.values.price.price.value,
       comite: parsed_request.view.state.values.comite.comite.selected_option.text.text
     };
-    
-    console.log(event_cover)
-    
+
+    let message_template = {
+        "blocks": [
+            {
+                "type": "section",
+                "text": {
+                    "type": "mrkdwn",
+                    "text": "You have a new request:\n*Fred Enriquez -Lúdicas*"
+                }
+            },
+            {
+                "type": "section",
+                "fields": [
+                    {
+                        "type": "mrkdwn",
+                        "text": "*Título:*\n"
+                    },
+                    {
+                        "type": "mrkdwn",
+                        "text": "*DL:*\n"
+                    },
+                    {
+                        "type": "mrkdwn",
+                        "text": "*MP(s):*\n"
+                    },
+                    {
+                        "type": "mrkdwn",
+                        "text": "*Fecha del Evento:*\n"
+                    },
+                    {
+                        "type": "mrkdwn",
+                        "text": "*Localización:*\n"
+                    },
+                    {
+                        "type": "mrkdwn",
+                        "text": "*Precio:*\n"
+                    },
+                    {
+                        "type": "mrkdwn",
+                        "text": "*Comité:*\n"
+                    },
+                    {
+                        "type": "mrkdwn",
+                        "text": "*Comentarios para quién diseña:*\n"
+                    }
+                ]
+            }
+        ]
+    }
+
     const body = {
-    text: event_cover,
+    text: message_template,
     channel: "#general"
   };
    
-  /* axios.post("https://slack.com/api/chat.postMessage", body, config);
-   */
+  axios.post("https://slack.com/api/chat.postMessage", body, config);
+  
 });
 app.post("/cover", function(req, res) {
   res.status(200).end();
