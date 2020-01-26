@@ -217,26 +217,25 @@ app.post("/interactions", function(req, res) {
     headers: { Authorization: "Bearer " + process.env.SLACK_ACCESS_TOKEN }
   };
   let parsed_request = JSON.parse(req.body.payload) 
-  /* const event_cover = {
-      title: parsed_request.view.state.values.title.value,
-      mp: parsed_request.view.state.values.mp.value,
-      dl: parsed_request.view.state.values.dl.value,
+  const event_cover = {
+      title: parsed_request.view.state.values.title.title.value,
+      mp: parsed_request.view.state.values.mp.mp.value,
+      dl: parsed_request.view.state.values.dl.selected_date,
       location: parsed_request.view.state.values.location.value,
       comments: parsed_request.view.state.values.comments.value,
-      event_date: parsed_request.view.state.values["event-date"].value,
-      price: parsed_request.view.state.values.price.value,
+      event_date: parsed_request.view.state.values["event-date"]["event-date"].selected_date,
+      price: parsed_request.view.state.values.price.price.value,
       comite: parsed_request.view.state.values.comite.comite.selected_option.text.text
     };
-     */
-    console.log(parsed_request.view.state.values)
-  /*   console.log(event_cover)
+    
+    console.log(event_cover)
     
     const body = {
     text: event_cover,
     channel: "#general"
   };
    
-  axios.post("https://slack.com/api/chat.postMessage", body, config);
+  /* axios.post("https://slack.com/api/chat.postMessage", body, config);
    */
 });
 app.post("/cover", function(req, res) {
