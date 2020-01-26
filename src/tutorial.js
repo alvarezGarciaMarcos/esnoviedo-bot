@@ -216,8 +216,8 @@ app.post("/interactions", function(req, res) {
   const config = {
     headers: { Authorization: "Bearer " + process.env.SLACK_ACCESS_TOKEN }
   };
-  console.log(req.body);
-  const event_cover = {
+  console.log(req.body.payload);
+  /* const event_cover = {
     title: req.view.state.values.title.value,
     mp: req.view.state.values.mp.value,
     dl: req.view.state.values.dl.value,
@@ -232,7 +232,7 @@ app.post("/interactions", function(req, res) {
     text: event_cover,
     channel: "#general"
   };
-
+ */
   axios.post("https://slack.com/api/chat.postMessage", body, config);
 });
 app.post("/cover", function(req, res) {
