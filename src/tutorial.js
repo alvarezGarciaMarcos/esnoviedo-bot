@@ -284,6 +284,9 @@ app.post("/interactions", function(req, res) {
                     "text": "*Comentarios para quién diseña:*\n"
                 }
             ]
+        },
+        {
+          "type": "divider"
         }
     ]
 
