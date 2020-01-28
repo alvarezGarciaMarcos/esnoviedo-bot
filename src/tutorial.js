@@ -211,7 +211,6 @@ app.get("/", function(req, res) {
   res.send("Hello World!");
 });
 
-
 app.post("/cover", function(req, res) {
   res.status(200).end();
   let payload = {
@@ -223,91 +222,89 @@ app.post("/cover", function(req, res) {
   openDialog(payload);
 });
 
-
 //Handles de submission of forms
 app.post("/interactions", function(req, res) {
   res.status(200).end();
   const config = {
     headers: { Authorization: "Bearer " + process.env.BOT_USER_TOKEN }
   };
-  let parsed_request = JSON.parse(req.body.payload) 
+  let parsed_request = JSON.parse(req.body.payload);
   const event_cover = {
-      title: parsed_request.view.state.values.title.title.value,
-      mp: parsed_request.view.state.values.mp.mp.value,
-      dl: parsed_request.view.state.values.dl.dl.selected_date,
-      location: parsed_request.view.state.values.location.location.value,
-      comments: parsed_request.view.state.values.comments.comments.value,
-      event_date: parsed_request.view.state.values["event-date"]["event-date"].selected_date,
-      price: parsed_request.view.state.values.price.price.value,
-      comite: parsed_request.view.state.values.comite.comite.selected_option.text.text,
-      username: parsed_request.user.username
-    };
-    let blocks = [
+    title: parsed_request.view.state.values.title.title.value,
+    mp: parsed_request.view.state.values.mp.mp.value,
+    dl: parsed_request.view.state.values.dl.dl.selected_date,
+    location: parsed_request.view.state.values.location.location.value,
+    comments: parsed_request.view.state.values.comments.comments.value,
+    event_date:
+      parsed_request.view.state.values["event-date"]["event-date"]
+        .selected_date,
+    price: parsed_request.view.state.values.price.price.value,
+    comite:
+      parsed_request.view.state.values.comite.comite.selected_option.text.text,
+    username: parsed_request.user.username
+  };
+  let blocks = [
+    {
+      type: "section",
+      text: {
+        type: "mrkdwn",
+        text: "Nueva portada:\n"
+      }
+    },
+    {
+      type: "section",
+      fields: [
         {
-            "type": "section",
-            "text": {
-                "type": "mrkdwn",
-                "text": "Nueva portada:\n"
-            }
+          type: "mrkdwn",
+          text: "*Título:*\n"
         },
         {
-            "type": "section",
-            "fields": [
-                {
-                    "type": "mrkdwn",
-                    "text": "*Título:*\n"
-                },
-                {
-                    "type": "mrkdwn",
-                    "text": "*DL:*\n"
-                },
-                {
-                    "type": "mrkdwn",
-                    "text": "*MP(s):*\n"
-                },
-                {
-                    "type": "mrkdwn",
-                    "text": "*Fecha del Evento:*\n"
-                },
-                {
-                    "type": "mrkdwn",
-                    "text": "*Localización:*\n"
-                },
-                {
-                    "type": "mrkdwn",
-                    "text": "*Precio:*\n"
-                },
-                {
-                    "type": "mrkdwn",
-                    "text": "*Comité:*\n"
-                },
-                {
-                    "type": "mrkdwn",
-                    "text": "*Comentarios para quién diseña:*\n"
-                }
-            ]
+          type: "mrkdwn",
+          text: "*DL:*\n"
         },
         {
-          "type": "divider"
+          type: "mrkdwn",
+          text: "*MP(s):*\n"
+        },
+        {
+          type: "mrkdwn",
+          text: "*Fecha del Evento:*\n"
+        },
+        {
+          type: "mrkdwn",
+          text: "*Localización:*\n"
+        },
+        {
+          type: "mrkdwn",
+          text: "*Precio:*\n"
+        },
+        {
+          type: "mrkdwn",
+          text: "*Comité:*\n"
+        },
+        {
+          type: "mrkdwn",
+          text: "*Comentarios para quién diseña:*\n"
         }
-    ]
+      ]
+    },
+    {
+      type: "divider"
+    }
+  ];
 
-    blocks = populateMessage(blocks, event_cover);
+  blocks = populateMessage(blocks, event_cover);
 
-
-    const body = {
+  const body = {
     blocks: blocks,
     channel: "#general",
-    text: '¡Nueva petición de portada!',
+    text: "¡Nueva petición de portada!",
     as_user: true
   };
-   
+
   //axios.post("https://slack.com/api/chat.postMessage", body, config);
-  createDM(event_cover.username)
-  
+  createDM(event_cover.username);
 });
-
-
 
 function openDialog(payload) {
   const config = {
@@ -317,41 +314,41 @@ function openDialog(payload) {
   request_view.trigger_id = payload.trigger_id;
   request_view.view.blocks[0].element["initial_value"] = payload.text;
   const body = request_view;
-  
 
   axios.post("https://slack.com/api/views.open", body, config);
 }
 
-function populateMessage(blocks, event_cover){
-  blocks[1].fields[0].text += event_cover.title
-  blocks[1].fields[1].text += event_cover.dl
-  blocks[1].fields[2].text += event_cover.mp
-  blocks[1].fields[3].text += event_cover.event_date
-  blocks[1].fields[4].text += event_cover.location
-  blocks[1].fields[5].text += event_cover.price
-  blocks[1].fields[6].text += event_cover.comite
-  blocks[1].fields[7].text += event_cover.comments
-  blocks[0].text.text += event_cover.username
+function populateMessage(blocks, event_cover) {
+  blocks[1].fields[0].text += event_cover.title;
+  blocks[1].fields[1].text += event_cover.dl;
+  blocks[1].fields[2].text += event_cover.mp;
+  blocks[1].fields[3].text += event_cover.event_date;
+  blocks[1].fields[4].text += event_cover.location;
+  blocks[1].fields[5].text += event_cover.price;
+  blocks[1].fields[6].text += event_cover.comite;
+  blocks[1].fields[7].text += event_cover.comments;
+  blocks[0].text.text += event_cover.username;
   return blocks;
 }
 
+function createDM(username) {
+  let body = {
+    users: '' + username
+  };
 
-function createDM(username){
-    let body = {
-      users: username
-    }
+  console.log(body)
 
-    const config = {
-      headers: { Authorization: "Bearer " + process.env.SLACK_ACCESS_TOKEN }
-    };
+  const config = {
+    headers: { Authorization: "Bearer " + process.env.SLACK_ACCESS_TOKEN }
+  };
 
-    axios.post('https://slack.com/api/conversations.open', body, config)
-      .then(function(response){
-        console.log(response)
-      })
+  axios
+    .post("https://slack.com/api/conversations.open", body, config)
+    .then(function(response) {
+      console.log(response);
+    });
 }
 
-
 app.listen(port, function() {
-    console.log(`Listening on port ${port}`)
-	  })
+  console.log(`Listening on port ${port}`);
+});
