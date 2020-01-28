@@ -275,6 +275,8 @@ app.post("/interactions", function(req, res) {
         }
     ]
 
+    console.log(parsed_request)
+
     blocks = populateMessage(blocks, event_cover);
     
 
@@ -321,7 +323,7 @@ function openDialog(payload) {
   request_view.view.blocks[0].element["initial_value"] = payload.text;
   const body = request_view;
   request_view.private_metadata = payload.username
-  console.log(payload)
+  
 
   axios.post("https://slack.com/api/views.open", body, config);
 }
