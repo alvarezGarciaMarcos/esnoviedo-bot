@@ -223,10 +223,12 @@ app.post("/cover", function(req, res) {
   openDialog(payload);
 });
 
+
+//Handles de submission of forms
 app.post("/interactions", function(req, res) {
   res.status(200).end();
   const config = {
-    headers: { Authorization: "Bearer " + process.env.SLACK_ACCESS_TOKEN }
+    headers: { Authorization: "Bearer " + process.env.BOT_USER_TOKEN }
   };
   let parsed_request = JSON.parse(req.body.payload) 
   const event_cover = {
@@ -296,7 +298,8 @@ app.post("/interactions", function(req, res) {
     const body = {
     blocks: blocks,
     channel: "#general",
-    text: '¡Nueva petición de portada!'
+    text: '¡Nueva petición de portada!',
+    as_user: true
   };
    
   axios.post("https://slack.com/api/chat.postMessage", body, config);
