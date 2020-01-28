@@ -226,7 +226,7 @@ app.post("/interactions", function(req, res) {
       event_date: parsed_request.view.state.values["event-date"]["event-date"].selected_date,
       price: parsed_request.view.state.values.price.price.value,
       comite: parsed_request.view.state.values.comite.comite.selected_option.text.text,
-      username: parsed_request.view.private_metadata
+      username: parsed_request.view.user.username
     };
     let blocks = [
         {
@@ -275,10 +275,8 @@ app.post("/interactions", function(req, res) {
         }
     ]
 
-    console.log(parsed_request)
-
     blocks = populateMessage(blocks, event_cover);
-    
+        
 
     const body = {
     blocks: blocks,
@@ -300,7 +298,6 @@ function populateMessage(blocks, event_cover){
     blocks[1].fields[6].text += event_cover.comite
     blocks[1].fields[7].text += event_cover.comments
     blocks[0].text.text += event_cover.username
-    console.log(event_cover)
     return blocks;
 }
 app.post("/cover", function(req, res) {
