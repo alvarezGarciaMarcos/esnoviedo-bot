@@ -345,7 +345,7 @@ function createDM(username) {
   axios
     .post("https://slack.com/api/conversations.open", body, config)
     .then(function(response) {
-      console.log(response);
+      
     });
 }
 
