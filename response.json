@@ -9,9 +9,9 @@
   },
   "api_app_id": "AT4NX857G",
   "token": "1smBtlsoGjqCmAHiSjkyqcZ5",
-  "trigger_id": "924926900102.592701374656.797f2f0b3214c6d10c1c3c97246e5df0",
+  "trigger_id": "925292973828.592701374656.591a1fc90ba370db440e36135b59cafc",
   "view": {
-    "id": "VT47NEW3W",
+    "id": "VT78L688L",
     "team_id": "THELMB0KA",
     "type": "modal",
     "blocks": [
@@ -27,7 +27,7 @@
         "element": {
           "type": "plain_text_input",
           "action_id": "title",
-          "initial_value": "j"
+          "initial_value": "Martes de Tapas"
         }
       },
       {
@@ -187,7 +187,9 @@
     "callback_id": "cover-submission",
     "state": {
       "values": {
-        "title": { "title": { "type": "plain_text_input", "value": "j" } },
+        "title": {
+          "title": { "type": "plain_text_input", "value": "Martes de Tapas" }
+        },
         "dl": { "dl": { "type": "datepicker", "selected_date": "2020-01-01" } },
         "event-date": {
           "event-date": { "type": "datepicker", "selected_date": "2020-01-01" }
@@ -196,20 +198,28 @@
           "comite": {
             "type": "static_select",
             "selected_option": {
-              "text": { "type": "plain_text", "text": "Viajes", "emoji": true },
-              "value": "viajes"
+              "text": {
+                "type": "plain_text",
+                "text": "Cultura",
+                "emoji": true
+              },
+              "value": "cultura"
             }
           }
         },
         "comments": {
-          "comments": { "type": "plain_text_input", "value": "d" }
+          "comments": { "type": "plain_text_input", "value": "." }
         },
-        "mp": { "mp": { "type": "plain_text_input", "value": "d" } },
-        "price": { "price": { "type": "plain_text_input", "value": "dd" } },
-        "location": { "location": { "type": "plain_text_input", "value": "d" } }
+        "mp": {
+          "mp": { "type": "plain_text_input", "value": "16:00 - Oviedo " }
+        },
+        "price": { "price": { "type": "plain_text_input", "value": "0" } },
+        "location": {
+          "location": { "type": "plain_text_input", "value": "Oviedo " }
+        }
       }
     },
-    "hash": "1580074644.bf55d858",
+    "hash": "1580233498.1dcdc552",
     "title": {
       "type": "plain_text",
       "text": "Pedir una portada",
@@ -220,7 +230,7 @@
     "close": { "type": "plain_text", "text": "Cancelar", "emoji": true },
     "submit": { "type": "plain_text", "text": "Pedir", "emoji": true },
     "previous_view_id": null,
-    "root_view_id": "VT47NEW3W",
+    "root_view_id": "VT78L688L",
     "app_id": "AT4NX857G",
     "external_id": "",
     "app_installed_team_id": "THELMB0KA",
