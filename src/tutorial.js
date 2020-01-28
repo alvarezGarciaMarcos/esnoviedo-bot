@@ -298,6 +298,7 @@ function populateMessage(blocks, event_cover){
     blocks[1].fields[6].text += event_cover.comite
     blocks[1].fields[7].text += event_cover.comments
     blocks[0].text.text += event_cover.username
+    console.log(event_cover)
     return blocks;
 }
 app.post("/cover", function(req, res) {
