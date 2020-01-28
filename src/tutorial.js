@@ -211,6 +211,18 @@ app.get("/", function(req, res) {
   res.send("Hello World!");
 });
 
+
+app.post("/cover", function(req, res) {
+  res.status(200).end();
+  let payload = {
+    username: req.body.user_name,
+    trigger_id: req.body.trigger_id,
+    text: req.body.text
+  };
+
+  openDialog(payload);
+});
+
 app.post("/interactions", function(req, res) {
   res.status(200).end();
   const config = {
@@ -226,7 +238,7 @@ app.post("/interactions", function(req, res) {
       event_date: parsed_request.view.state.values["event-date"]["event-date"].selected_date,
       price: parsed_request.view.state.values.price.price.value,
       comite: parsed_request.view.state.values.comite.comite.selected_option.text.text,
-      username: parsed_request.view.user.username
+      username: parsed_request.view["user"]["username"]
     };
     let blocks = [
         {
@@ -276,7 +288,7 @@ app.post("/interactions", function(req, res) {
     ]
 
     blocks = populateMessage(blocks, event_cover);
-        
+
 
     const body = {
     blocks: blocks,
@@ -288,28 +300,7 @@ app.post("/interactions", function(req, res) {
   
 });
 
-function populateMessage(blocks, event_cover){
-    blocks[1].fields[0].text += event_cover.title
-    blocks[1].fields[1].text += event_cover.dl
-    blocks[1].fields[2].text += event_cover.mp
-    blocks[1].fields[3].text += event_cover.event_date
-    blocks[1].fields[4].text += event_cover.location
-    blocks[1].fields[5].text += event_cover.price
-    blocks[1].fields[6].text += event_cover.comite
-    blocks[1].fields[7].text += event_cover.comments
-    blocks[0].text.text += event_cover.username
-    return blocks;
-}
-app.post("/cover", function(req, res) {
-  res.status(200).end();
-  let payload = {
-    username: req.body.user_name,
-    trigger_id: req.body.trigger_id,
-    text: req.body.text
-  };
 
-  openDialog(payload);
-});
 
 function openDialog(payload) {
   const config = {
@@ -319,11 +310,24 @@ function openDialog(payload) {
   request_view.trigger_id = payload.trigger_id;
   request_view.view.blocks[0].element["initial_value"] = payload.text;
   const body = request_view;
-  request_view.private_metadata = payload.username
   
 
   axios.post("https://slack.com/api/views.open", body, config);
 }
+
+function populateMessage(blocks, event_cover){
+  blocks[1].fields[0].text += event_cover.title
+  blocks[1].fields[1].text += event_cover.dl
+  blocks[1].fields[2].text += event_cover.mp
+  blocks[1].fields[3].text += event_cover.event_date
+  blocks[1].fields[4].text += event_cover.location
+  blocks[1].fields[5].text += event_cover.price
+  blocks[1].fields[6].text += event_cover.comite
+  blocks[1].fields[7].text += event_cover.comments
+  blocks[0].text.text += event_cover.username
+  return blocks;
+}
+
 
 app.listen(port, function() {
     console.log(`Listening on port ${port}`)
