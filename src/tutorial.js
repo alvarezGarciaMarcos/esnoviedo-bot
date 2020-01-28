@@ -319,10 +319,11 @@ function openDialog(payload) {
   request_view.view.blocks[0].element["initial_value"] = payload.text;
   const body = request_view;
   request_view.private_metadata = payload.username
+  console.log(payload)
 
   axios.post("https://slack.com/api/views.open", body, config);
 }
 
 app.listen(port, function() {
-  console.log(`Listening on port ${port}`);
-});
+    console.log(`Listening on port ${port}`))
+	  }
