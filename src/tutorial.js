@@ -238,7 +238,7 @@ app.post("/interactions", function(req, res) {
       event_date: parsed_request.view.state.values["event-date"]["event-date"].selected_date,
       price: parsed_request.view.state.values.price.price.value,
       comite: parsed_request.view.state.values.comite.comite.selected_option.text.text,
-      username: parsed_request.view["user"]["username"]
+      username: parsed_request.user.username
     };
     let blocks = [
         {
