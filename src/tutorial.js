@@ -302,7 +302,8 @@ app.post("/interactions", function(req, res) {
     as_user: true
   };
    
-  axios.post("https://slack.com/api/chat.postMessage", body, config);
+  //axios.post("https://slack.com/api/chat.postMessage", body, config);
+  createDM(event_cover.username)
   
 });
 
@@ -332,6 +333,22 @@ function populateMessage(blocks, event_cover){
   blocks[1].fields[7].text += event_cover.comments
   blocks[0].text.text += event_cover.username
   return blocks;
+}
+
+
+function createDM(username){
+    let body = {
+      users: username
+    }
+
+    const config = {
+      headers: { Authorization: "Bearer " + process.env.SLACK_ACCESS_TOKEN }
+    };
+
+    axios.post('https://slack.com/api/conversations.open', body, config)
+      .then(function(response){
+        console.log(response)
+      })
 }
 
 
