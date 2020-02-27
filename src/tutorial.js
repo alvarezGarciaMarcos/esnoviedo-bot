@@ -333,7 +333,7 @@ function populateMessage(blocks, event_cover) {
 
 function createDM(username) {
   let body = {
-    users: '@' + username
+    users: username
   };
 
   console.log(body)
